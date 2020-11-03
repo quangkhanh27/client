@@ -56,7 +56,7 @@ const DangKy = (props) => {
   const addAccount = (obj) => {
     axios({
       method: "post",
-      url: "http://ec2-13-250-110-181.ap-southeast-1.compute.amazonaws.com/api/addtodo",
+      url: "http://ec2-54-255-136-216.ap-southeast-1.compute.amazonaws.com/api/addtodo",
       data: obj,
     }).then((res) => {
       console.log(res);
@@ -68,13 +68,13 @@ const DangKy = (props) => {
     console.log(_id);
     axios({
       method: "get",
-      url: `http://ec2-13-250-110-181.ap-southeast-1.compute.amazonaws.com/api/checkid/?_id=${_id}`,
+      url: `http://ec2-54-255-136-216.ap-southeast-1.compute.amazonaws.com/api/checkid/?_id=${_id}`,
     })
       .then((res) => {
         if (ktNhapDuLieu()) {
           const {_id,pass,name,email,sex} = obj
           let new_obj = {_id,pass,name,email,sex}
-          addAccount(obj)
+          addAccount(new_obj)
           props.setIsOpen(1);
         }
       })

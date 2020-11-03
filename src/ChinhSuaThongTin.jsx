@@ -46,7 +46,7 @@ const ChinhSuaThongTin = (props) => {
   const updateAccount = (obj) => {
     axios({
       method: "put",
-      url: "http://ec2-13-250-110-181.ap-southeast-1.compute.amazonaws.com/api/login",
+      url: "http://ec2-54-255-136-216.ap-southeast-1.compute.amazonaws.com/api/login",
       data: obj,
     })
       .then((res) => {
