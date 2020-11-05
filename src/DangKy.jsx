@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { toast } from "react-toastify";
 import axios from "axios";
+import api_url from './constant'
 
 const DangKy = (props) => {
   const [obj, setObj] = useState({
@@ -13,6 +14,7 @@ const DangKy = (props) => {
     sex: "",
   });
 
+  console.log(process.env);
   const handleChange = (e) => {
     let new_obj = { ...obj };
 
@@ -56,7 +58,7 @@ const DangKy = (props) => {
   const addAccount = (obj) => {
     axios({
       method: "post",
-      url: "http://ec2-54-255-136-216.ap-southeast-1.compute.amazonaws.com/api/addtodo",
+      url: `${api_url}/addtodo`,
       data: obj,
     }).then((res) => {
       console.log(res);
@@ -68,7 +70,7 @@ const DangKy = (props) => {
     console.log(_id);
     axios({
       method: "get",
-      url: `http://ec2-54-255-136-216.ap-southeast-1.compute.amazonaws.com/api/checkid/?_id=${_id}`,
+      url: `${api_url}/checkid/?_id=${_id}`,
     })
       .then((res) => {
         if (ktNhapDuLieu()) {

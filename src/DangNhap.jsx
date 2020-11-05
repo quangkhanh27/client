@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {  toast } from "react-toastify";
+import { toast } from "react-toastify";
+import api_url from "./constant";
 
 const DangNhap = (props) => {
   console.log("Dang nhap render");
-  const { setIsOpen,setAccount } = props;
+
+  const { setIsOpen, setAccount } = props;
   const [taiKhoan, setTaiKhoan] = useState({
     _id: "",
     pass: "",
   });
-
 
   const handleChange = (e) => {
     let new_taiKhoan = { ...taiKhoan };
@@ -20,37 +21,37 @@ const DangNhap = (props) => {
 
   const handleClickDangNhap = () => {
     if (ktNhapDuLieu() === true) {
-      checkLogin(taiKhoan)
+      checkLogin(taiKhoan);
     }
   };
 
   const handleClickDangKy = () => {
-    setIsOpen(2)
+    setIsOpen(2);
   };
 
   const ktNhapDuLieu = () => {
     if (taiKhoan["_id"].length === 0) {
-      toast.error("Không được để tên đăng nhập trống")
+      toast.error("Không được để tên đăng nhập trống");
       return false;
     }
     if (taiKhoan["pass"].length === 0) {
-      toast.error("Không được để mật khẩu trống")
+      toast.error("Không được để mật khẩu trống");
       return false;
     }
-    return true
+    return true;
   };
 
   const checkLogin = (taiKhoan) => {
     axios({
       method: "post",
-      url: "http://ec2-54-255-136-216.ap-southeast-1.compute.amazonaws.com/api/login",
+      url: `${api_url}/login`,
       data: taiKhoan,
     })
       .then((res) => {
         console.log(res);
-        toast.success(res.data.status)
-        setAccount(res.data.user)
-        setIsOpen(3)
+        toast.success(res.data.status);
+        setAccount(res.data.user);
+        setIsOpen(3);
       })
       .catch((err) => {
         toast.error(err.response.data);

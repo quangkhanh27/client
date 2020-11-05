@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { toast } from "react-toastify";
 import axios from "axios";
-
+import api_url from './constant'
 const ChinhSuaThongTin = (props) => {
   const { account, setAccount } = props;
-
+  
   const [obj, setObj] = useState({
     name: "",
     _id: "",
@@ -13,6 +13,7 @@ const ChinhSuaThongTin = (props) => {
     email: "",
     sex: "",
   });
+
 
   const handleChange = (e) => {
     let new_obj = { ...obj };
@@ -46,7 +47,7 @@ const ChinhSuaThongTin = (props) => {
   const updateAccount = (obj) => {
     axios({
       method: "put",
-      url: "http://ec2-54-255-136-216.ap-southeast-1.compute.amazonaws.com/api/login",
+      url: `${api_url}/login`,
       data: obj,
     })
       .then((res) => {
