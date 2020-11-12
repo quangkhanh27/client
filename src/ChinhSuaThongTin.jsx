@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { toast } from "react-toastify";
 import axios from "axios";
-import api_url from './constant'
+import api_url from "./constant";
 
 const ChinhSuaThongTin = (props) => {
-  const { account, setAccount } = props;
-  
+  const { account, setAccount, setIsOpen } = props;
+
   const [obj, setObj] = useState({
     name: "",
     _id: "",
@@ -14,7 +14,6 @@ const ChinhSuaThongTin = (props) => {
     email: "",
     sex: "",
   });
-
 
   const handleChange = (e) => {
     let new_obj = { ...obj };
@@ -24,8 +23,8 @@ const ChinhSuaThongTin = (props) => {
   };
 
   const handleClickChinhSua = () => {
-    if (ktNhapDuLieu() === true){
-      updateAccount(obj)
+    if (ktNhapDuLieu() === true) {
+      updateAccount(obj);
     }
   };
 
@@ -50,13 +49,12 @@ const ChinhSuaThongTin = (props) => {
       method: "put",
       url: `${api_url}/login`,
       data: obj,
-    })
-      .then((res) => {
-        console.log(res);
-        toast.success(res.data);
-        setAccount(obj);
-        // setIsOpen(3);
-      })
+    }).then((res) => {
+      console.log(res);
+      toast.success(res.data);
+      setAccount(obj);
+      // setIsOpen(3);
+    });
   };
 
   useEffect(() => {
@@ -166,6 +164,12 @@ const ChinhSuaThongTin = (props) => {
                   onClick={handleClickChinhSua}
                 >
                   Chỉnh sửa
+                </div>
+                <div
+                  className="btn btn-primary btn-block"
+                  onClick={() => setIsOpen(1)}
+                >
+                  Đăng xuất
                 </div>
               </div>
             </form>

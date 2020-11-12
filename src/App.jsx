@@ -26,20 +26,11 @@ function App() {
       case 2:
         return <DangKy setIsOpen={setIsOpen} />;
       case 3:
-        return <ChinhSuaThongTin account={account} setAccount={setAccount} />;
+        return <ChinhSuaThongTin setIsOpen={setIsOpen} account={account} setAccount={setAccount} />;
       default:
         return
     }
   };
-
-  // function addAccount(account) {
-  //   axios({
-  //     method: "post",
-  //     url:
-  //       "http://ec2-13-229-208-34.ap-southeast-1.compute.amazonaws.com//api/todo",
-  //     data: account,
-  //   });
-  // }
 
   return (
     <div>
