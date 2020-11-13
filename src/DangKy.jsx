@@ -11,7 +11,7 @@ const DangKy = (props) => {
     pass: "",
     pass1: "",
     email: "",
-    sex: "",
+    sex: "male",
   });
 
   console.log(process.env);
