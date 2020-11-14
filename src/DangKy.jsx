@@ -119,7 +119,7 @@ const DangKy = (props) => {
                 <input
                   name="pass"
                   className="form-control"
-                  placeholder="Ít nhất 6 ký tự"
+                  placeholder="Nhập mật khẩu"
                   type="password"
                   onChange={handleChange}
                 />
@@ -129,7 +129,7 @@ const DangKy = (props) => {
                 <input
                   name="pass1"
                   className="form-control"
-                  placeholder="Ít nhất 6 ký tự"
+                  placeholder="Nhập lại mật khẩu"
                   type="password"
                   onChange={handleChange}
                 />
